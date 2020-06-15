@@ -2,7 +2,8 @@
 UCI 数据库中的数据集 Adult （https://archive.ics.uci.edu/ml/datasets/Adult）
 是针对美国某区域的一次人口普查结果, 可以用来预测居民收入是否超过 50K,
 分为训练集（adult.data）和测试集（adult.test）.
-注意: workclass, occupation 和 native_country 含有部分 缺失值, 需填充或者去掉
+注意1: workclass, occupation 和 native_country 含有部分 缺失值, 需填充或者去掉
+注意2: 缺失值存在以下情况: 不缺失; 都缺失; 只缺失occupation; 只缺失native_country; 同时缺失workclass和occupation.
 
 【数据格式】:（adult.data 和 adult.test）
 39, State-gov, 77516, Bachelors, 13, Never-married, Adm-clerical, Not-in-family, White, Male, 2174, 0, 40, United-States, <=50K
