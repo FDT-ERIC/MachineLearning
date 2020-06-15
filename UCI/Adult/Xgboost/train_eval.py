@@ -7,9 +7,9 @@ from sklearn.metrics import classification_report
 # =====================================================================================================================
 
 # train data path
-TRAIN_DATA_PATH = './Data/full_sorted_int.csv'
+TRAIN_DATA_PATH = '../Data/full_sorted_int.csv'
 # test data path
-TEST_DATA_PATH = './Data/test_without_qm__int.csv'
+TEST_DATA_PATH = '../Data/test_without_qm__int.csv'
 
 # =====================================================================================================================
 
@@ -22,9 +22,9 @@ ind_params = {'learning_rate': 0.1, 'n_estimators': 1000, 'seed': 0,
 # define model
 model = GridSearchCV(XGBClassifier(**ind_params),
                       cv_params,
-                      scoring='accuracy',
-                      cv=5,
-                      n_jobs=-1)
+                      scoring='accuracy',  # 准确度评价标准
+                      cv=5,                # cross_validation，交叉验证
+                      n_jobs=-1)           # 并行数，int：个数,-1：跟CPU核数一致, 1:默认值
 
 # =====================================================================================================================
 

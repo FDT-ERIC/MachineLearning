@@ -2,6 +2,7 @@ import pandas as pd
 from xgboost import XGBClassifier
 from sklearn.model_selection import GridSearchCV
 
+# =====================================================================================================================
 
 # col labels
 col_attributes = ['age', 'workclass', 'fnlwgt', 'education', 'education_num', 'marital_status',
@@ -14,7 +15,7 @@ ind_params = {'learning_rate': 0.1, 'n_estimators': 1000, 'seed': 0,
               'subsample': 0.8, 'colsample_bytree': 0.8,
               'objective': 'binary:logistic'}
 
-# define model
+# Xgboost use GridSearch
 model = GridSearchCV(XGBClassifier(**ind_params),
                       cv_params,
                       scoring='accuracy',
@@ -27,8 +28,8 @@ model = GridSearchCV(XGBClassifier(**ind_params),
 def get_data():
 
     # data path
-    train_path = './Data/adult.data.csv'
-    test_path = './Data/adult.test.csv'
+    train_path = '../Data/adult.data.csv'
+    test_path = '../Data/adult.test.csv'
 
     # data
     train_set = pd.read_csv(train_path, header=None)
@@ -38,7 +39,7 @@ def get_data():
     train_set.columns = col_attributes
     test_set.columns = col_attributes
 
-    # replace '<=50K.' by '<=50K', replace '>50K.' by '>50K' in test set
+    # replace ' <=50K.' by ' <=50K', replace ' >50K.' by ' >50K' in test set
     replace_dict = {' <=50K.': ' <=50K', ' >50K.': ' >50K'}
     test_set['income'] = test_set['income'].replace(replace_dict)
 
@@ -144,6 +145,7 @@ train_all_without_qm, train_all_with_qm, train_only_occ, train_only_nat, train_w
 
 # testing set
 test_all_without_qm, test_all_with_qm, test_only_occ, test_only_nat, test_wor_occ = dealQM(test_set)
+
 
 # =====================================================================================================================
 
